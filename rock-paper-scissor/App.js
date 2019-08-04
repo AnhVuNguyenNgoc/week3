@@ -10,7 +10,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
-    this.state = { name: "", uri: "http://pngimg.com/uploads/stone/stone_PNG13622.png", nameCom: "rock", uriCom: "http://pngimg.com/uploads/stone/stone_PNG13622.png", result: "", colorResult: "red", iconResult: "ios-medal", totalTrying: 0, winResult: 0, defeatResult: 0, tieResult: 0 };
+    this.state = { name: "rock", uri: "http://pngimg.com/uploads/stone/stone_PNG13622.png", nameCom: "rock", uriCom: "http://pngimg.com/uploads/stone/stone_PNG13622.png", result: "", colorResult: "red", iconResult: "ios-medal", totalTrying: 0, winResult: 0, defeatResult: 0, tieResult: 0 };
 
     this.onPressButton = this.onPressButton.bind(this);
   }
@@ -27,11 +27,10 @@ export default class App extends Component {
     let statusResult = determineStatusResult(result)
     let [colorResult, iconResult] = statusResult
 
-    let { beforeWinResult, beforeDefeatResult, beforeTieResult } = this.state
-    let detailResult = determineStatusDetailResult(result, [beforeWinResult, beforeDefeatResult, beforeTieResult])
-    let [winResult, defeatResult, tieResult] = detailResult
+    let { winResult, defeatResult, tieResult } = this.state
+    let detailResult = determineStatusDetailResult(result, [winResult, defeatResult, tieResult])
+    let [_winResult, _defeatResult, _tieResult] = detailResult
 
-    console.log(winResult)
     //setState()
     let { name, uri } = playerChoice
     let nameCom = computerChoice.name
@@ -39,7 +38,8 @@ export default class App extends Component {
     let totalTrying = this.state.totalTrying; totalTrying++
 
     this.setState({
-      name, uri, nameCom, uriCom, result, colorResult, iconResult, totalTrying, winResult, defeatResult, tieResult
+      name, uri, nameCom, uriCom, result, colorResult, iconResult, totalTrying, 
+      winResult:_winResult, defeatResult:_defeatResult, tieResult:_tieResult
     })
   }
 

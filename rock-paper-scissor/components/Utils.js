@@ -29,8 +29,8 @@ const determineStatusResult = (result) => {
 
     switch (result) {
         case "Victory!": colorText = "green", iconText = "ios-medal"; break;
-        case "Defeat!": colorText = "black", iconText = "ios-refresh"; break;
-        case "Tie game!": colorText = "red", iconText = "ios-reorder"; break;
+        case "Defeat!": colorText = "red", iconText = "ios-refresh"; break;
+        case "Tie game!": colorText = "black", iconText = "ios-reorder"; break;
     }
     return [colorText, iconText];
 }
@@ -48,4 +48,8 @@ const determineStatusDetailResult = (result, prevResult) => {
     return [winResult, defeatResult, tieResult];
 }
 
-export { getRoundOutcome, determineStatusResult, determineStatusDetailResult }
+const roundNumber = (number) => {
+    return Math.round(number);
+}
+
+export { getRoundOutcome, determineStatusResult, determineStatusDetailResult,roundNumber }
